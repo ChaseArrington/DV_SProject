@@ -1,0 +1,66 @@
+#ui.R 
+
+library(shiny)
+
+# Define UI for application that plots random distributions 
+shinyUI(fluidPage(
+  tabsetPanel(
+    tabPanel(title = "Home Run Hitters Scatterplot",pageWithSidebar(headerPanel("Home Run Hitters Scatterplot"),
+          sidebarPanel(sliderInput("mindate",                                                              "Beginning Year:", 
+                    min = 1985,
+                    max = 2006,
+                    value = 1985, format = '####'), 
+                sliderInput("maxdate",
+                    "Ending Year:",
+                    min = 1986,
+                    max = 2007,
+                    value = 2007, format = '####')), mainPanel(plotOutput("scatplot")))),
+  tabPanel(title = "Barchart",pageWithSidebar(headerPanel("Power Hitting by Team"),
+          sidebarPanel(checkboxGroupInput("teams",
+                                          "Select Team(s):",
+                                          c("Angels" = "ANA",
+                                            "Diamondbacks" = "ARI",
+                                            "Braves" = "ATL",
+                                            "Orioles" = "BAL",
+                                            "Red Sox" = "BOS",
+                                            "White Sox" = "CHA",
+                                            "Cubs" = "CHN",
+                                            "Reds" = "CIN",
+                                            "Indians" = "CLE",
+                                            "Rockies" = "COL",
+                                            "Tigers" = "DET",
+                                            "Marlins" = "FLA",
+                                            "Astros" = "HOU",
+                                            "Royals" = "KCR",
+                                            "Angels" = "LAA",
+                                            "Dodgers" = "LAN",
+                                            "Brewers" = "MIL",
+                                            "Twins" = "MIN",
+                                            "Yankees" = "NYA",
+                                            "Mets" = "NYN",
+                                            "Athletics" = "OAK",
+                                            "PHillies" = "PHI",
+                                            "Pirates" = "PIT",
+                                            "Padres" = "SDN",
+                                            "Mariners" = "SEA",
+                                            "Giants" = "SFN",
+                                            "Cardinals" = "SLN",
+                                            "Rays" = "TBA",
+                                            "Rangers" = "TEX",
+                                            "Blue Jays" = "TOR",
+                                            "Nationals" = "WAS"
+                                            )
+                                          )),
+                                      mainPanel(plotOutput("barplot"))), actionButton(inputId = "clicks", label = "Run")),
+  tabPanel(title = "Crosstab", pageWithSidebar(headerPanel("On Base Percentage for World Series Teams 2010"), sidebarPanel(sliderInput("minOBP",                                                             "Minimum On Base Percentage:", 
+                                       min = 0.275,
+                                       max = 0.449,
+                                       value = 0.275, format = '#.###'), 
+                                       
+                                       sliderInput("maxOBP",
+                                       "Max On Base Percentage:",
+                                        min = 0.276,
+                                        max = 0.450,
+                                        value = 0.450, format = '#.###')),
+                                          mainPanel(plotOutput("crossplot"))))
+  )))

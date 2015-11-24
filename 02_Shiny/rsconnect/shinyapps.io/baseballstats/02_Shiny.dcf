@@ -1,0 +1,8 @@
+name: 02_Shiny
+account: baseballstats
+server: shinyapps.io
+bundleId: 317837
+url: https://baseballstats.shinyapps.io/02_Shiny
+when: 1448329458.67014
+asMultiple: FALSE
+asStatic: FALSE
